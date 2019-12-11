@@ -179,6 +179,11 @@ namespace Calculator
 
         public  static decimal Divide(decimal n1, decimal n2)
         {
+            if (n2 == 0)
+            {
+                MessageBox.Show("0作为分母是非法的", "提示", MessageBoxButton.OK, MessageBoxImage.Error);
+                return 0;
+            }
             return n1 / n2;
         }
     }
