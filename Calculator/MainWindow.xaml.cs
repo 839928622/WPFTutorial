@@ -66,6 +66,8 @@ namespace Calculator
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             ResultLabel.Content = "0";
+            _result = 0;
+            _lastNumber = 0;
         }
 
         // 所有运算符被单击触发的方法
@@ -179,12 +181,9 @@ namespace Calculator
 
         public  static decimal Divide(decimal n1, decimal n2)
         {
-            if (n2 == 0)
-            {
-                MessageBox.Show("0作为分母是非法的", "提示", MessageBoxButton.OK, MessageBoxImage.Error);
-                return 0;
-            }
-            return n1 / n2;
+            if (n2 != 0) return n1 / n2;
+            MessageBox.Show("0作为分母是非法的", "提示", MessageBoxButton.OK, MessageBoxImage.Error);
+            return 0;
         }
     }
 }
