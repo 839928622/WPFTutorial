@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <StackPanel Margin="10">
+            <Button Content="新建联系人" Click="NewContact"></Button>
+            <ListView x:Name="ContactsList" Margin="0 0 5 0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Window>

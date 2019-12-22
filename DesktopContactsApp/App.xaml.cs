@@ -13,5 +13,8 @@ namespace DesktopContactsApp
     /// </summary>
     public partial class App : Application
     {
+        public static string DatabaseName = "Contacts.db";//定义数据库的名字
+        public static string FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);//电脑中的我的文档文件夹
+        public static string DatabasePath = System.IO.Path.Combine(FolderPath, DatabaseName);//数据库所在的文件夹
     }
 }
