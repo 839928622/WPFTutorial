@@ -8,11 +8,15 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel Margin="10">
+            <TextBox TextChanged="TextBoxBase_OnTextChanged"></TextBox>
             <Button Content="新建联系人" Click="NewContact"></Button>
-            <ListView x:Name="ContactsList" Margin="0 0 5 0">
+
+            <ListView x:Name="ContactsList" Margin="0 0 5 0" SelectionChanged="ContactsList_OnSelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-
+                        <StackPanel>
+                            <TextBlock FontSize="20" Text="{Binding Name}"></TextBlock>
+                        </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
