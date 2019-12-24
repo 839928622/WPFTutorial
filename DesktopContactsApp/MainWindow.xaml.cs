@@ -44,6 +44,8 @@ namespace DesktopContactsApp
             {
                 connection.CreateTable<Contact>();
                  contacts = connection.Table<Contact>().ToList();//从数据库中读取数据
+                 //connection.Delete()  用于删除记录，基本上是查询出来再删除。
+                // connection.Update() //用户更新记录的API
             }
 
             //foreach (var contact in contacts)
@@ -65,7 +67,7 @@ namespace DesktopContactsApp
         {
             Contact selectedContact = (Contact) ContactsList.SelectedItem;//选中的项
             ContactDetailWindow newContactWindow = new ContactDetailWindow(selectedContact);
-            throw new NotImplementedException();
+            newContactWindow.ShowDialog();//展示对话框，且和主窗口互斥
         }
         /// <summary>
         /// 文本框的文字发生变化触发的事件
