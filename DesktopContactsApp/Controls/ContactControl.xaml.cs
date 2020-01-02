@@ -36,8 +36,8 @@ namespace DesktopContactsApp.Controls
         private static void SetText(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             ContactControl contactControl = d as ContactControl;// d其实就是ContactControl，因为在Register方法里，ContactControl被传进来了
-            
-            contactControl.NameTextBlock.Text = (e.NewValue as Contact)?.Name;
+
+            if (contactControl != null) contactControl.NameTextBlock.Text = (e.NewValue as Contact)?.Name;
             throw new NotImplementedException();
         }
 

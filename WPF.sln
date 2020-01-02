@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopContactsApp", "DesktopContactsApp\DesktopContactsApp.csproj", "{1F7C2614-ED54-4A1B-8CB8-B0D1022CAA99}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileAndHttp", "FileAndHttp\FileAndHttp.csproj", "{FC7E3323-93C9-4429-8BB6-F372B756DB50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp", "WeatherApp\WeatherApp.csproj", "{BDA96682-7A64-4C34-A57A-F2B4E3BFFE93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{1F7C2614-ED54-4A1B-8CB8-B0D1022CAA99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F7C2614-ED54-4A1B-8CB8-B0D1022CAA99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F7C2614-ED54-4A1B-8CB8-B0D1022CAA99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC7E3323-93C9-4429-8BB6-F372B756DB50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC7E3323-93C9-4429-8BB6-F372B756DB50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC7E3323-93C9-4429-8BB6-F372B756DB50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC7E3323-93C9-4429-8BB6-F372B756DB50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDA96682-7A64-4C34-A57A-F2B4E3BFFE93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDA96682-7A64-4C34-A57A-F2B4E3BFFE93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA96682-7A64-4C34-A57A-F2B4E3BFFE93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDA96682-7A64-4C34-A57A-F2B4E3BFFE93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
