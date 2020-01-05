@@ -6,15 +6,38 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Annotations;
+using WeatherApp.Model;
+using WeatherApp.ViewModel.Helpers;
 
 namespace WeatherApp.ViewModel
 {
   public  class WeatherVM : INotifyPropertyChanged
     {
 
-        private int query;
+        public WeatherVM()
+        {
+            if (DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject()))
+            {
 
-        public int Query
+               this.CurrentConditions = new CurrentConditions {WeatherText = "多云"};
+               this. CurrentConditions.Temperature = new Temperature()
+               {
+                   Metric = new Units()
+                   {
+                       Value = 23
+                   }
+               };
+               this.  SelectedCity = new City()
+               {
+                   LocalizedName = "上海",
+               };
+                
+            }
+        }
+
+        private string query;
+
+        public string Query
         {
             get { return query; }
             set
@@ -32,5 +55,42 @@ namespace WeatherApp.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        private CurrentConditions currentConditions;
+
+        public CurrentConditions CurrentConditions
+        {
+            get => currentConditions;
+            set
+            {
+                currentConditions
+                    = value;
+                OnPropertyChanged(nameof(CurrentConditions));
+            }
+               
+        }
+
+
+        private City selectedCity;
+
+        public City SelectedCity
+        {
+            get { return selectedCity; }
+            set
+            {
+                selectedCity = value; 
+                OnPropertyChanged(nameof(selectedCity));
+            }
+        }
+
+        /// <summary>
+        /// 这个方法将在Query属性发生变化的时候被调用 因此 需要实现ICommand接口
+        /// </summary>
+        public async void MakeQuery()
+        {
+          var citys = await   AccuWeatherHelper.GetCities(this.Query);
+        }
+
+
     }
 }
