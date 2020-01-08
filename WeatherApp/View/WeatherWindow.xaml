@@ -19,7 +19,7 @@
         <StackPanel Margin="20">
             <TextBlock Text="搜索城市："></TextBlock>
             <TextBox Text="{Binding Query , Mode=TwoWay}"></TextBox>
-            <Button Content="搜索"></Button>
+            <Button Content="搜索" Command="{Binding SearchCommand}"></Button>
             <ListView  >
                 <ListView.ItemTemplate>
                     <DataTemplate>

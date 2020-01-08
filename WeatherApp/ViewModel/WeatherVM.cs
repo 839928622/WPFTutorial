@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Annotations;
 using WeatherApp.Model;
+using WeatherApp.ViewModel.Commands;
 using WeatherApp.ViewModel.Helpers;
 
 namespace WeatherApp.ViewModel
@@ -33,7 +34,13 @@ namespace WeatherApp.ViewModel
                };
                 
             }
+
+            SearchCommand = new SearchCommand(this);//初始化
         }
+
+        public SearchCommand SearchCommand { get; set; }
+
+
 
         private string query;
 
