@@ -15,10 +15,15 @@ namespace WeatherApp.ViewModel.Commands
         {
             _vm = vm;//为了能够访问WeatherVM中的MakeQuery方法，需要把该实例注入进来
         }
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
         public bool CanExecute(object parameter)
         {
-            return true;
+            var query = parameter as string;
+            return !string.IsNullOrWhiteSpace(query);//页面上，如果输入的字符串是空的，那么Execute方法就不能执行（即返回false）
         }
 
         public void Execute(object parameter)

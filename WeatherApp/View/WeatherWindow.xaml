@@ -18,13 +18,15 @@
 
         <StackPanel Margin="20">
             <TextBlock Text="搜索城市："></TextBlock>
-            <TextBox Text="{Binding Query , Mode=TwoWay}"></TextBox>
-            <Button Content="搜索" Command="{Binding SearchCommand}"></Button>
-            <ListView  >
+            <TextBox Text="{Binding Query , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"></TextBox>
+            <Button Content="搜索" Command="{Binding SearchCommand}"
+                                   CommandParameter="{Binding Query}"   ></Button> 
+            <ListView ItemsSource="{Binding Cities}" 
+                      SelectedValue="{Binding SelectedCity}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <TextBlock></TextBlock>
+                            <TextBlock Text="{Binding LocalizedName}"></TextBlock>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
