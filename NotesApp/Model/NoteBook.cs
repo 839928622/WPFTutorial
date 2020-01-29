@@ -22,7 +22,9 @@ namespace NotesApp.Model
         public int Id
         {
             get { return id; }
-            set { id = value; }
+            set { id = value;
+                OnPropertyChanged(nameof(Id));
+            }
         }
 
         private int userId;//the ower of notebook
@@ -30,7 +32,10 @@ namespace NotesApp.Model
         public int UserId
         {
             get { return userId; }
-            set { userId = value; }
+            set { userId = value; 
+                OnPropertyChanged(nameof(UserId));
+
+            }
         }
 
 
@@ -39,7 +44,9 @@ namespace NotesApp.Model
         public string Name
         {
             get { return name; }
-            set { name = value; }
+            set { name = value; 
+                OnPropertyChanged(nameof(Name));
+            }
         }
             
     }

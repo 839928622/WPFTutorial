@@ -21,7 +21,9 @@ namespace NotesApp.Model
         public int Id
         {
             get { return id; }
-            set { id = value; }
+            set { id = value; 
+                OnPropertyChanged(nameof(Id));
+            }
         }
 
         private string name;
@@ -29,7 +31,9 @@ namespace NotesApp.Model
         public string Name
         {
             get { return name; }
-            set { name = value; }
+            set { name = value; 
+                OnPropertyChanged(nameof(Name));
+            }
         }
 
         private string lastName;
@@ -37,7 +41,10 @@ namespace NotesApp.Model
         public string LastName
         {
             get { return lastName; }
-            set { lastName = value; }
+            set { lastName = value; 
+                OnPropertyChanged(nameof(LastName));
+
+            }
         }
 
         private string userName;
@@ -45,7 +52,9 @@ namespace NotesApp.Model
         public string UserName
         {
             get { return userName; }
-            set { userName = value; }
+            set { userName = value;
+                OnPropertyChanged(nameof(UserName));
+            }
         }
 
         private string email;
@@ -53,7 +62,9 @@ namespace NotesApp.Model
         public string Email
         {
             get { return email; }
-            set { email = value; }
+            set { email = value;
+                OnPropertyChanged(nameof(Email));
+            }
         }
 
         private string password;
@@ -62,7 +73,9 @@ namespace NotesApp.Model
         public string Password
         {
             get { return password; }
-            set { password = value; }
+            set { password = value;
+                OnPropertyChanged(nameof(Password));
+            }
         }
 
 

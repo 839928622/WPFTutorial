@@ -19,7 +19,10 @@ namespace NotesApp.Model
         public int Id
         {
             get { return id; }
-            set { id = value; }
+            set { id = value;
+                OnPropertyChanged(nameof(Id));
+
+            }
         }
 
         private int noteBookId; //notebook whick note belongs to
@@ -27,7 +30,10 @@ namespace NotesApp.Model
         public int NoteBookId
         {
             get { return noteBookId; }
-            set { noteBookId = value; }
+            set { noteBookId = value;
+                OnPropertyChanged(nameof(NoteBookId));
+
+            }
         }
 
         private string title;
@@ -35,7 +41,10 @@ namespace NotesApp.Model
         public string Title
         {
             get { return title; }
-            set { title = value; }
+            set { title = value; 
+                OnPropertyChanged(nameof(Title));
+
+            }
         }
 
         private DateTime createdTime;
@@ -43,7 +52,10 @@ namespace NotesApp.Model
         public DateTime CreatedTime
         {
             get { return createdTime; }
-            set { createdTime = value; }
+            set { createdTime = value;
+                OnPropertyChanged(nameof(CreatedTime));
+
+            }
         }
 
         private DateTime updateTime;
@@ -52,7 +64,10 @@ namespace NotesApp.Model
 
         {
             get { return updateTime; }
-            set { updateTime = value; }
+            set { updateTime = value; 
+                OnPropertyChanged(nameof(UpdateTime));
+
+            }
         }
 
 
@@ -60,7 +75,10 @@ namespace NotesApp.Model
         public string FileLocation
         {
             get { return fileLocation; }
-            set { fileLocation = value; }
+            set { fileLocation = value;
+                OnPropertyChanged(nameof(FileLocation));
+
+            }
         }
 
 
