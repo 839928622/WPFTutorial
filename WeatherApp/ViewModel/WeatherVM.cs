@@ -22,11 +22,15 @@ namespace WeatherApp.ViewModel
             {
 
                this.CurrentConditions = new CurrentConditions {WeatherText = "多云"};
-               this. CurrentConditions.Temperature = new Temperature()
-               {
-                   Metric = new Units()
-                   {
-                       Value = "23"
+                this.CurrentConditions.Temperature = new Temperature()
+                {
+                    Metric = new Units()
+                    {
+                        Value = "23"
+                    },
+                    Units = new Units
+                    {
+                        Unit = ""
                    }
                };
                this.  SelectedCity = new City()
