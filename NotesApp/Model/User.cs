@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace NotesApp.Model
 {
-  public  class User
+  public  class User : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private int id;
 
         public int Id
@@ -49,6 +52,7 @@ namespace NotesApp.Model
         }
 
         private string password;
+
 
         public string Password
         {
