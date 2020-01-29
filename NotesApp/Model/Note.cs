@@ -10,6 +10,10 @@ namespace NotesApp.Model
   public   class Note : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         private int id;
 
         public int Id
