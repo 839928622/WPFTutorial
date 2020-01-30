@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace NotesApp.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         private int id;
+        [PrimaryKey, AutoIncrement]
 
         public int Id
         {
@@ -26,7 +28,7 @@ namespace NotesApp.Model
         }
 
         private int noteBookId; //notebook whick note belongs to
-
+        [Indexed]
         public int NoteBookId
         {
             get { return noteBookId; }
