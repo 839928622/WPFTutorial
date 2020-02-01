@@ -28,5 +28,16 @@ namespace NotesApp.View
         {
             Application.Current.Shutdown();
         }
+
+        private void RichTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            int ammountOfCharacters = (new TextRange(NoteContent.Document.ContentStart, NoteContent.Document.ContentEnd)).Text.Length;//获取富文本框下的字符长度，作为字符数
+            AmountOfContent.Text = $"字数：{ ammountOfCharacters }"; //这种用法类似winform
+        }
+
+        private void boldButton_Click(object sender, RoutedEventArgs e)
+        {
+             NoteContent.Selection.ApplyPropertyValue(Inline.FontWeightProperty,FontWeights.Bold);//用户选中的文本 然后在其中作用fontweights.bold效果
+        }
     }
 }

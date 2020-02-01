@@ -10,7 +10,7 @@ namespace NotesApp.ViewModel
 {
  public   class DatabaseHelper
     {
-        private static  string dbFile = Path.Combine(Environment.CurrentDirectory, "notedb.db");
+        public static  string dbFile = Path.Combine(Environment.CurrentDirectory, "notedb.db");
 
         public static bool Insert<T> (T item)
         {
