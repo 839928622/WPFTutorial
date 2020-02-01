@@ -4,9 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NotesApp.View"
+        xmlns:vm="clr-namespace:NotesApp.ViewModel"
         mc:Ignorable="d"
         Title="NotesWindow" Height="450" Width="800">
-    <Grid>
+    <Window.Resources>
+        <vm:NotesVM x:Key="viewModel"></vm:NotesVM>
+    </Window.Resources>
+    <DockPanel DataContext="{StaticResource viewModel}">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="文件">
+                <MenuItem Header="新合集" Command="{Binding NewNotebookCommand}"></MenuItem>
+                <MenuItem Header="新笔记" Command="{Binding NewNoteCommand}" CommandParameter="{Binding SelectedNotebook}"></MenuItem> <!--因为新笔记按钮，必须选中一个新合集-->
+                <Separator></Separator>
+                <MenuItem Header="退出" Click="Exit_Application"></MenuItem>
+            </MenuItem>
+        </Menu>
         
-    </Grid>
+    </DockPanel>
 </Window>

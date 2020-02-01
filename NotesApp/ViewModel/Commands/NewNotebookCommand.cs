@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NotesApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace NotesApp.ViewModel.Commands
 {
     public class NewNotebookCommand : ICommand
     {
+        public NotesVM VM { get; set; }
         public NewNotebookCommand(NotesVM vm)
         {
              VM = vm;
@@ -18,14 +20,18 @@ namespace NotesApp.ViewModel.Commands
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            
+             return true;
+           
         }
 
         public void Execute(object parameter)
         {
+
+
             //创建新的笔记合集
+            VM.CreateNewNotebook();
         }
 
-        public NotesVM VM { get; set; }
     }
 }

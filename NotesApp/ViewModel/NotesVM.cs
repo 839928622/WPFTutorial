@@ -13,7 +13,7 @@ namespace NotesApp.ViewModel
     {
         public NotesVM()
         {
-            NewNotebook = new NewNotebookCommand(this);
+            NewNotebookCommand = new NewNotebookCommand(this);
             NewNoteCommand = new NewNoteCommand(this);
         }
         public ObservableCollection<NoteBook> Notebooks { get; set; }
@@ -30,8 +30,35 @@ namespace NotesApp.ViewModel
 
         public ObservableCollection<Note> Notes { get; set; }//选中之后，就可以拿出具体的笔记来了
 
-        public NewNotebookCommand NewNotebook { get; set; }
+        public NewNotebookCommand NewNotebookCommand { get; set; }
         public NewNoteCommand NewNoteCommand { get; set; }
 
+
+
+        //创建新笔记的方法
+        public void CreateNewNote(int notebookId)
+        {
+            var newNote = new Note
+            {
+                NoteBookId = notebookId,
+                CreatedTime = DateTime.Now,
+                UpdateTime = DateTime.Now,
+                Title = "新笔记",
+
+                
+            };
+            DatabaseHelper.Insert<Note>(newNote);
+        }
+
+        //创建新的笔记合集
+        public void CreateNewNotebook()
+        {
+            NoteBook newNotebook = new NoteBook
+            {
+                Name = "新笔记合集"
+            };
+
+            DatabaseHelper.Insert(newNotebook);
+        }
     }
 }

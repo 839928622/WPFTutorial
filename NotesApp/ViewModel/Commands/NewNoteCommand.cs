@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NotesApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +18,17 @@ namespace NotesApp.ViewModel.Commands
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            NoteBook notebook = parameter as NoteBook;
+            if (notebook != null)
+                return true;
+            return false;
         }
 
         public void Execute(object parameter)
         {
+            //要获取到选中的notebook的id
+            NoteBook notebook = parameter as NoteBook;
+            VM.CreateNewNote(notebook.Id);
             //创建新的笔记
         }
 

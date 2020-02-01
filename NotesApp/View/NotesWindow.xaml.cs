@@ -23,5 +23,10 @@ namespace NotesApp.View
         {
             InitializeComponent();
         }
+
+        private void Exit_Application(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
