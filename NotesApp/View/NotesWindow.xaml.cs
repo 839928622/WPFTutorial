@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -58,23 +59,71 @@ namespace NotesApp.View
 
         private void boldButton_Click(object sender, RoutedEventArgs e)
         {
-             NoteContent.Selection.ApplyPropertyValue(Inline.FontWeightProperty,FontWeights.Bold);//用户选中的文本 然后在其中作用fontweights.bold效果
-        }
-
-        //语音转文字按钮
-        bool isRecognizing = false;//是否正在识别的状态
-        private void SpeechButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (isRecognizing == false)
+            bool IsChecked = (sender as ToggleButton).IsChecked ?? false; //using System.Windows.Controls.Primitives; 此后IsChecked完全由按钮本身进行控制，不需要认为去定义第三个变量去控制
+            if (IsChecked)
             {
+              NoteContent.Selection.ApplyPropertyValue(Inline.FontWeightProperty,FontWeights.Bold);//用户选中的文本 然后在其中作用fontweights.bold效果
 
-                recognizer.RecognizeAsync(RecognizeMode.Multiple);
-                isRecognizing = true;
             }
             else
             {
-                recognizer.RecognizeAsyncStop();
-                isRecognizing = false;
+             NoteContent.Selection.ApplyPropertyValue(Inline.FontWeightProperty,FontWeights.Normal);//用户选中的文本 然后在其中作用fontweights.normal效果
+
+            }
+
+
+        }
+
+        //语音转文字按钮
+
+        private void SpeechButton_Click(object sender, RoutedEventArgs e)
+        {
+            bool IsChecked = (sender as ToggleButton).IsChecked ?? false; //using System.Windows.Controls.Primitives; 此后IsChecked完全由按钮本身进行控制，不需要认为去定义第三个变量去控制
+            if (IsChecked )
+                recognizer.RecognizeAsync(RecognizeMode.Multiple);
+            recognizer.RecognizeAsyncStop();
+                
+            
+        }
+
+        private void RichTextBox_OnSelectionChanged(object sender, RoutedEventArgs e)
+        {
+            var selectedWeight = NoteContent.Selection.GetPropertyValue(Inline.FontWeightProperty);//获取选中文字的字重属性
+            boldButton.IsChecked = (selectedWeight != DependencyProperty.UnsetValue) && selectedWeight.Equals(FontWeights.Bold);//selectedState不为null 且等于粗体的时候返回true
+
+            var selectedStyle= NoteContent.Selection.GetPropertyValue(Inline.FontStyleProperty);//获取选中文字的style属性
+            ItalicButton.IsChecked = (selectedStyle != DependencyProperty.UnsetValue) && selectedStyle.Equals(FontStyles.Italic);//selectedStyle不为null 且等于italic的时候返回true
+
+            var selectedDecoration = NoteContent.Selection.GetPropertyValue(Inline.TextDecorationsProperty);//获取选中文字的TextDecorationsProperty属性
+            UnderlineButton.IsChecked = (selectedDecoration != DependencyProperty.UnsetValue) && selectedStyle.Equals(TextDecorations.Underline);//selectedDecoration != null 且等于underline的时候返回true
+        }
+        //斜体功能
+        private void ItalicButton_Click(object sender, RoutedEventArgs e)
+        {
+            bool IsChecked = (sender as ToggleButton).IsChecked ?? false; 
+            if (IsChecked)
+            {
+                NoteContent.Selection.ApplyPropertyValue(Inline.FontStyleProperty, FontStyles.Italic);
+            }
+            else
+            {
+                NoteContent.Selection.ApplyPropertyValue(Inline.FontStyleProperty, FontStyles.Normal);
+            }
+        }
+
+        //下划线功能
+        private void UnderlineButton_Click(object sender, RoutedEventArgs e)
+        {
+            bool IsChecked = (sender as ToggleButton).IsChecked ?? false;
+            if (IsChecked)
+            {
+                NoteContent.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, TextDecorations.Underline);
+            }
+            else
+            {
+                TextDecorationCollection textDecorations;
+                (NoteContent.Selection.GetPropertyValue(Inline.TextDecorationsProperty) as TextDecorationCollection).TryRemove(TextDecorations.Underline,out textDecorations);
+                NoteContent.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, textDecorations);
             }
         }
     }
