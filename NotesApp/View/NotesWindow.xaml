@@ -41,13 +41,13 @@
                 <!--这里定义我们list里的每一条数据应该以什么方式显示-->
                 <DataTemplate>
                     <TextBlock Text="{Binding Title}"/>
-                    <!--这里我们选择显示Notebook属性（对向）里的Name-->
+                    <!--这里我们选择显示Notebook属性（对象）里的Name-->
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <ToolBarTray DockPanel.Dock="Top">
             <ToolBar>
-                <Button Content="语音转文字"></Button>
+                <Button Content="语音转文字" Click="SpeechButton_Click"></Button>
                 <Button x:Name="boldButton" Click="boldButton_Click">
                     <TextBlock Text="B" FontWeight="Bold"></TextBlock></Button>
 

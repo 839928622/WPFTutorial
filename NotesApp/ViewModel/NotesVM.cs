@@ -28,7 +28,8 @@ namespace NotesApp.ViewModel
         {
             get { return selectedNotebook; }
             set { selectedNotebook = value;
-//TODO:这里当用户选择某个笔记的时候，需要向后台发起请求，获取笔记
+                //TODO:这里当用户选择某个笔记的时候，需要向后台发起请求，获取笔记
+                ReadNotes();
             }
         }
 
@@ -52,6 +53,8 @@ namespace NotesApp.ViewModel
                 
             };
             DatabaseHelper.Insert<Note>(newNote);
+            //添加完毕之后读取一下笔记
+            ReadNotes();
         }
 
         //创建新的笔记合集
